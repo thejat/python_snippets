@@ -20,7 +20,7 @@ def earthquake(request):
     reader = csv.reader(open("csvgps.csv"), delimiter=",")
     index = 0
     for line in reader:
-        if index > 0 and index <= 20:
+        if index > 0: #and index <= 20:
             data[index - 1][0] = float(line[1])
             data[index - 1][1] = float(line[2])
             data[index - 1][2] = float(line[4])
