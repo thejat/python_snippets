@@ -16,11 +16,13 @@ def earthquake(request):
     with open('csvgps.csv','w') as temp:
         temp.write(f)
 
-    #data = [[0 for col in range(3)] for row in range(20)]
     reader = csv.reader(open("csvgps.csv"), delimiter=",")
-    index = 1
+    upper_limit = min(100,len([0 for line in reader])-1)
+    data = [[0 for col in range(3)] for row in range(upper_limit)]
+    index = 0
+    reader = csv.reader(open("csvgps.csv"), delimiter=",")
     for line in reader:
-        if index > 0: #and index <= 20:
+        if index > 0 and index <= upper_limit:
             data[index - 1][0] = float(line[1])
             data[index - 1][1] = float(line[2])
             data[index - 1][2] = float(line[4])
